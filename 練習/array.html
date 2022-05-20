@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let animals = [
+      { id: 'a1', en: 'cat', cn: '貓', num: 30 },
+      { id: 'a2', en: 'dog', cn: '狗', num: 10 },
+      { id: 'a3', en: 'rabbit', cn: '兔', num: 5 },
+      { id: 'a4', en: 'bear', cn: '熊', num: 15 },
+      { id: 'a5', en: 'mouse', cn: '鼠', num: 20 }
+    ];
+
+    //在剛剛的動物陣列範例中，用迭代陣列方法跟展開運算子在每個物件中加上新的屬性size，且value為 ‘small’
+
+    let newAnimals = animals.map((item, index) => {
+      return {
+        ...item,
+        size: "small"
+      }
+    })
+    console.log(newAnimals)
+
+    //--------------------------------------------------
+    //找到熊，將其size改為 ‘large’
+    let newBear = newAnimals.findIndex((item, index) => {
+      return item.cn === "熊"
+    })
+    console.log(newBear)
+    newAnimals[newBear].size = "large"
+    console.log(newAnimals)
+
+
+    //--------------------------------------------------
+    //用展開運算子在index = 2的資料後面新增一筆資料
+    let a = newAnimals.filter((item, index) => {
+      return index < 2
+    })
+    let b = newAnimals.filter((item, index) => {
+      return index >= 2
+    })
+    let newAnimals2 = [...a, { id: 'a35', en: 'pig', cn: '豬', num: 3, size: "medium" }, ...b]
+    console.log(newAnimals2);
+
+
+    //--------------------------------------------------
+    //找到此時數量<10的第一個動物，印出它的中文名稱
+    let lessThanTen = newAnimals2.find((item, index) => item.num <10);
+    console.log(lessThanTen.cn)
+
+  </script>
+</body>
+
+</html>
